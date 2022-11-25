@@ -31,17 +31,17 @@ struct DocAppDocument: FileDocument {
         self.scene = SCNScene(named: "robot.usdz")!
     }
 
-    static var readableContentTypes: [UTType] { [.exampleText] }
-    static var readable3DContentTypes: [UTType] { [.usdz] }
+    static var readableContentTypes: [UTType] { [.exampleText, .usdz, .obj] }
 
     init(configuration: ReadConfiguration) throws {
-        guard let data = configuration.file.regularFileContents,
-              let string = String(data: data, encoding: .utf8)
-        else {
-            throw CocoaError(.fileReadCorruptFile)
-        }
-        text = string
-        
+//        guard let data = configuration.file.regularFileContents,
+//              let string = String(data: data, encoding: .utf8)
+//        else {
+//            throw CocoaError(.fileReadCorruptFile)
+//        }
+//        text = string
+        text = "dummy"
+
         guard let data = configuration.file.regularFileContents,
               let source = SCNSceneSource(data: data, options: nil),
               let model = source.scene(options: nil)
